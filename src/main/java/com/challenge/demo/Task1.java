@@ -16,8 +16,11 @@ public class Task1 {
         while (!queue.isEmpty()) {
             Node currentNode = queue.poll();
             result.add(currentNode);
+
+            // check and enqueue if right node present
             if (currentNode.right != null) {
                 queue.add(currentNode.right);
+            // if right node not present, check and push left node
             } else if (currentNode.left != null) {
                 queue.add(currentNode.left);
             }

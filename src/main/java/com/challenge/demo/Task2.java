@@ -14,8 +14,7 @@ public class Task2 {
         index++;
 
         while (index < s.length()) {
-            if (s.charAt(index) == ']') {
-                //pop the elements
+            if (s.charAt(index) == ']') { // check if current element is "]", its time to decode string
                 String decString = getDecodedString(stack);
                 stack.push(decString);
             } else {
@@ -31,13 +30,16 @@ public class Task2 {
         StringBuilder decoString = new StringBuilder();
         String result = "";
 
+        // keep appending string till we get "["
         while (!stack.peek().equals("[")) {
             decoString.append(stack.pop());
         }
         stack.pop();
+
         int occ = Integer.parseInt(stack.pop());
         decoString.reverse();
 
+        // create sub decoded string
         for (int i = 0; i < occ; i++) {
             result = result + decoString;
         }
