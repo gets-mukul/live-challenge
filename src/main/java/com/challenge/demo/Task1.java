@@ -20,10 +20,15 @@ public class Task1 {
             // check and enqueue if right node present
             if (currentNode.right != null) {
                 queue.add(currentNode.right);
-            // if right node not present, check and push left node
+                // if right node not present, check and push left node
             } else if (currentNode.left != null) {
                 queue.add(currentNode.left);
             }
+        }
+
+        System.out.println("Right view of tree is: ");
+        for (Node node : result) {
+            System.out.println(node.val);
         }
 
         return result;

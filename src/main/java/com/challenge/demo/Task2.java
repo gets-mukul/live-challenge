@@ -3,11 +3,7 @@ package com.challenge.demo;
 import java.util.Stack;
 
 public class Task2 {
-    public static void main(String[] args) {
-//        String s = "3[a2[b]]"; // input 1
-        String s = "2[a]"; // input 2
-
-
+    public void decodeString(String s) {
         Stack<String> stack = new Stack();
         int index = 0;
         stack.add(String.valueOf(s.charAt(index)));
@@ -15,7 +11,7 @@ public class Task2 {
 
         while (index < s.length()) {
             if (s.charAt(index) == ']') { // check if current element is "]", its time to decode string
-                String decString = getDecodedString(stack);
+                String decString = decodeSubString(stack);
                 stack.push(decString);
             } else {
                 stack.push(String.valueOf(s.charAt(index)));
@@ -23,10 +19,14 @@ public class Task2 {
             index++;
         }
         System.out.println("Encoded String is: " + s);
-        System.out.println("Decoded Strong is: " + stack.pop());
+        String result = "";
+        while (!stack.isEmpty()) {
+            result = stack.pop() + result;
+        }
+        System.out.println("Decoded Strong is: " + result);
     }
 
-    public static String getDecodedString(Stack<String> stack) {
+    private String decodeSubString(Stack<String> stack) {
         StringBuilder decoString = new StringBuilder();
         String result = "";
 
